@@ -20,7 +20,7 @@
             v-for="(img, index) in imgs"
             :key="index"
           >
-            <div class="cube-image-preview-item" @click="itemClickHandler">
+            <div class="cube-image-preview-item">
               <cube-scroll
                 ref="items"
                 :options="scrollOptions"
@@ -253,12 +253,12 @@
         this.zoomTo(scroll, scroll.scale > 1 ? 1 : 2, e)
         scroll.disable()
       },
-      itemClickHandler() {
+      /* itemClickHandler() {
         clearTimeout(this.clickTid)
         this.clickTid = setTimeout(() => {
           !this.dblZooming && this.hide()
         }, this.scrollOptions.bounceTime)
-      },
+      }, */
       zoomTo(scroll, scale, e) {
         scroll.zoomTo(scale, e.pageX, e.pageY)
       }
