@@ -24,12 +24,42 @@
   }
   ```
 
+- 控制最大长度
+
+  通过 watch 组件的 value 值的长度可实现手工控制值长度。
+
+  ```html
+  <cube-input v-model="value"></cube-input>
+  ```
+
+  ```javascript
+  export default {
+    data() {
+      return {
+        value: ''
+      }
+    },
+    watch: {
+      value(newV) {
+        if (newV.length > 10) {
+          newV = newV.slice(0, 10)
+          this.$nextTick(() => {
+            this.value = newV
+          })
+        }
+      }
+    }
+  }
+  ```
+
+  上述代码就是控制输入内容长度不得超过10位。
+
 - 清空按钮
 
   可通过`clearable`配置清空按钮。
 
   在 1.11.0 版本之前 `clearable` 的值是布尔类型的，表示是否展示清除按钮；
-  
+
   在 1.11.0 版本之后 `clearable` 可配置为布尔类型，还可以配置为对象。
 
   ```html
@@ -122,3 +152,12 @@
 | - | - | - |
 | focus | 输入框聚焦后触发此事件，如果禁用状态，则不触发 | e - 事件对象 |
 | blur | 输入框失焦后触发此事件 | e - 事件对象 |
+| change | 绑定值改变且输入框失去焦点后触发 | e - 事件对象 |
+| input | 绑定值变化时触发 | 更新后的绑定值 |
+
+### 实例方法
+
+| 方法名 | 说明 |
+| - | - |
+| focus<sup>1.12.10+</sup> | 获得焦点 |
+| blur<sup>1.12.10+</sup> | 离焦 |

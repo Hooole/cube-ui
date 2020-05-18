@@ -104,9 +104,18 @@ Multi-line input box components. You can use the `v-model` directive to create t
   | remain | whether show the remaining count, if this value is `false` means show the textarea value length | Boolean | true/false | true |
   | negative | avaliable when `remain` is true, this value control whether allow remaining number is negative | Boolean | true/false | true |
 
-### Event
+### Events
 
 | Event Name | Description | Parameters |
 | - | - | - |
 | focus | This event is triggered after the textarea box is focused. If Textarea is disabled, it will not be triggered | e - event |
 | blur | This event is triggered after the textarea box blur | e - event |
+| input | The event is triggered when the binding value changes | The updated value |
+
+### Instance methods
+
+| Method name | Description |
+| - | - |
+| focus<sup>1.12.10+</sup> | Focus element |
+| blur<sup>1.12.10+</sup> | Blur element |
+
