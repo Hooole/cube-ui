@@ -10,7 +10,8 @@
             v-for="(panel, index) in data"
             :key="index"
             :index="index"
-            :data="panel" />
+            :data="panel"
+            :prop="prop"/>
         </slot>
       </div>
     </div>
@@ -50,6 +51,14 @@
         default() {
           /* istanbul ignore next */
           return []
+        }
+      },
+      prop:{
+        type: Object,
+        default() {
+          return {
+            text: 'text',
+            value: 'id'
         }
       }
     },
@@ -165,8 +174,8 @@
           this.selectedVal[panelIndex] = item
           this.selectedText[panelIndex] = item
         } else {
-          this.selectedVal[panelIndex] = item.value
-          this.selectedText[panelIndex] = item.text
+          this.selectedVal[panelIndex] = item[this.prop[value]]
+          this.selectedText[panelIndex] = item[this.prop[text]]
         }
         this.$set(this.selected, panelIndex, index)
         if (panelIndex === (this.data.length - 1)) {
